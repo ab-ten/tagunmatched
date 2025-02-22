@@ -1,0 +1,9 @@
+# サンプルの syntax-config.sample.yaml
+syntax:
+  single_tags:
+    - br
+    - img
+  group_tags:
+    - b
+    - i
+    - u
