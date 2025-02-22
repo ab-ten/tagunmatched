@@ -1,0 +1,6 @@
+.emacsDo
+.venv/
+.vscode/*
+__pycache__/
+!.vscode/settings.json
+!.vscode/tasks.json

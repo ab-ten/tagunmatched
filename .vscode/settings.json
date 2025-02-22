@@ -1,0 +1,28 @@
+{
+  "python.defaultInterpreterPath": ".venv\\scripts\\python.exe",
+  "python.testing.unittestArgs": [
+    "tagunmatched.py",
+    "--test"
+  ],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.venv": true
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[python]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true
+}

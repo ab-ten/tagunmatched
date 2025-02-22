@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run unittests",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "tagunmatched.py",
+        "--test"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Run the unittests for tagunmatched.py"
+    }
+  ]
+}
