@@ -4,3 +4,5 @@
 __pycache__/
 !.vscode/settings.json
 !.vscode/tasks.json
+.SourceSageAssets/
+issue_creator.log

@@ -81,6 +81,13 @@ class SyntaxChecker:
       return self.error("閉じられていないタグが残っています")
     return True
 
+  def is_whitespace(self, ch: str) -> bool:
+    return ch in [' ', '\t', '\n', '\r']
+
+  def skip_whitespace(self):
+    while self.current_char() is not None and self.is_whitespace(self.current_char()):
+      self.advance()
+
   def parse_tag(self) -> bool:
     # 現在の文字は '[' と仮定
     self.advance()  # '[' を消費
@@ -109,7 +116,7 @@ class SyntaxChecker:
       ch = self.current_char()
       if ch is None:
         return self.error("タグ名の途中で文字列が終了しました")
-      if ch in [' ', '\t', '\n', '\r', ']']:
+      if self.is_whitespace(ch) or ch == ']':
         break
       if ch == '`':
         return self.error("タグ名にバッククオートが現れました")
@@ -119,15 +126,13 @@ class SyntaxChecker:
       self.advance()
 
     # タグ名と引数の間の空白（エスケープされていないもの）を消費
-    while self.current_char() is not None and self.current_char() in [' ', '\t', '\n', '\r']:
-      self.advance()
+    self.skip_whitespace()
 
     # 引数のパース
     while self.current_char() is not None and self.current_char() != ']':
       # 連続する空白はひとつの区切りとして扱う
-      if self.current_char() in [' ', '\t', '\n', '\r']:
-        while self.current_char() is not None and self.current_char() in [' ', '\t', '\n', '\r']:
-          self.advance()
+      if self.is_whitespace(self.current_char()):
+        self.skip_whitespace()
         if self.current_char() == ']':
           break
         # 次の引数へ
